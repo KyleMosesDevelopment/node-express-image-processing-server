@@ -7,7 +7,7 @@ const { route } = require('../app')
 const router = Router()
 const storage = diskStorage({
     destination: 'api/uploads',
-    filename: filename
+    filename
  })
 
 const upload = multer({fileFilter,storage:storage})
