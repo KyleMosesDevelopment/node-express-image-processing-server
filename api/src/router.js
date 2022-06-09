@@ -34,9 +34,6 @@ router.post('/upload', upload.single('photo'), async (request, response) => {
     if(request.hasOwnProperty('fileValidationError')){
         return response.status(400).json({error: request.fileValidationError})
     }
-    else {
-        return response.status(201).json({success: true})
-    }
 
     try {
         await imageProcessor(request.file.filename)
@@ -44,6 +41,8 @@ router.post('/upload', upload.single('photo'), async (request, response) => {
     catch {
 
     }
+    
+    return response.status(201).json({success: true})
 })
 
 router.get('/photo-viewer', (request, response) => {
